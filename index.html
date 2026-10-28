@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دار الزيتون | مطعم المأكولات الشامية</title>
+<meta name="description" content="مطعم دار الزيتون: مأكولات شامية أصيلة، قائمة طعام تفاعلية وحجز طاولة عبر الإنترنت.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --olive:#2c3a27; --olive-2:#3d4f36; --sumac:#a3311f; --stone:#f6f4ee; --ink:#1f2419; --muted:#666c5e; --line:#dcd8cb; --card:#ffffff;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--stone:#171b14; --ink:#eceae1; --muted:#a4a998; --line:#343a2d; --card:#20261c; --sumac:#e0614b}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{font-family:'Tajawal',system-ui,sans-serif;background:var(--stone);color:var(--ink);line-height:1.7;font-size:17px}
+h1,h2,h3{font-family:'Reem Kufi','Tajawal',serif;line-height:1.3}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sumac);outline-offset:2px}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+
+header{background:var(--olive);color:#f3efe3;position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Reem Kufi';font-size:1.5rem;font-weight:700;text-decoration:none}
+nav{display:flex;gap:22px}
+nav a{text-decoration:none;opacity:.85}
+nav a:hover{opacity:1;text-decoration:underline}
+
+.hero{background:var(--olive);color:#f3efe3;padding:72px 0 88px;position:relative;overflow:hidden}
+.hero::after{content:"زيتون";position:absolute;inset-inline-start:-20px;bottom:-60px;font-family:'Reem Kufi';font-size:18rem;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none}
+.hero h1{font-size:clamp(2.4rem,7vw,4.4rem);max-width:12ch}
+.hero p{max-width:46ch;margin:18px 0 30px;opacity:.88;font-size:1.15rem}
+.btn{display:inline-block;background:var(--sumac);color:#fff;border:0;border-radius:var(--r);padding:12px 28px;font:700 1rem 'Tajawal';cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.5);margin-inline-start:10px}
+
+section{padding:64px 0}
+.sec-head{margin-bottom:28px}
+.sec-head h2{font-size:2rem}
+.sec-head p{color:var(--muted)}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:99px;padding:6px 20px;font:500 1rem 'Tajawal';cursor:pointer;transition:background .15s}
+.filters button:hover{border-color:var(--olive-2)}
+.filters button[aria-pressed="true"]{background:var(--olive);border-color:var(--olive);color:#f3efe3}
+@media (prefers-color-scheme:dark){.filters button[aria-pressed="true"]{background:var(--sumac);border-color:var(--sumac);color:#fff}}
+
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;list-style:none;padding:0}
+.dish{background:var(--card);border:1px solid var(--line);border-radius:var(--r);display:flex;gap:14px;padding:14px;align-items:flex-start}
+.dish .mark{flex:none;width:58px;height:58px;border-radius:8px;display:grid;place-items:center;font:700 1.8rem 'Reem Kufi';color:#fff}
+.dish h3{font-size:1.1rem}
+.dish p{color:var(--muted);font-size:.93rem;line-height:1.5;margin-top:2px}
+.dish .price{margin-inline-start:auto;font-weight:700;color:var(--sumac);white-space:nowrap}
+.empty{color:var(--muted);padding:20px 0}
+
+#book{background:var(--card);border-block:1px solid var(--line)}
+.book-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+@media (max-width:760px){.book-grid{grid-template-columns:1fr;gap:28px}nav{gap:14px;font-size:.95rem}.hero::after{display:none}}
+.hours{list-style:none;padding:0;margin-top:18px}
+.hours li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:8px 0}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field.full{grid-column:1/-1}
+label{font-weight:700;font-size:.95rem}
+input,select,textarea{font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--stone);color:var(--ink);width:100%}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--sumac)}
+.err{color:var(--sumac);font-size:.88rem;min-height:1.2em}
+form .btn{grid-column:1/-1;justify-self:start}
+@media (max-width:520px){form{grid-template-columns:1fr}}
+.ok{display:none;background:var(--olive);color:#f3efe3;border-radius:var(--r);padding:22px}
+.ok.show{display:block}
+
+footer{background:var(--olive);color:#d9d6c8;padding:28px 0;font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo">دار الزيتون</a>
+    <nav aria-label="التنقل الرئيسي">
+      <a href="#menu">القائمة</a>
+      <a href="#book">احجز طاولة</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>طعم البيت على سفرة واحدة</h1>
+      <p>مأكولات شامية تُحضّر يوميًا من مكونات طازجة وزيت زيتون بلدي. تصفّح القائمة واحجز طاولتك في دقيقة.</p>
+      <a class="btn" href="#book">احجز طاولة</a>
+      <a class="btn ghost" href="#menu">شاهد القائمة</a>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>قائمة الطعام</h2>
+        <p>اختر تصنيفًا لتصفية الأطباق.</p>
+      </div>
+      <div class="filters" role="group" aria-label="تصفية القائمة" id="filters"></div>
+      <ul class="menu" id="menuList" aria-live="polite"></ul>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="wrap book-grid">
+      <div>
+        <div class="sec-head"><h2>احجز طاولة</h2><p>سنؤكد حجزك برسالة على رقم هاتفك.</p></div>
+        <ul class="hours">
+          <li><span>السبت – الخميس</span><span>12:00 ظهرًا – 11:00 مساءً</span></li>
+          <li><span>الجمعة</span><span>2:00 ظهرًا – 12:00 منتصف الليل</span></li>
+        </ul>
+      </div>
+      <div>
+        <form id="bookForm" novalidate>
+          <div class="field"><label for="name">الاسم الكامل</label><input id="name" name="name" autocomplete="name"><span class="err" id="e-name"></span></div>
+          <div class="field"><label for="phone">رقم الهاتف</label><input id="phone" name="phone" type="tel" inputmode="tel" dir="ltr" placeholder="059 123 4567" autocomplete="tel"><span class="err" id="e-phone"></span></div>
+          <div class="field"><label for="date">التاريخ</label><input id="date" name="date" type="date"><span class="err" id="e-date"></span></div>
+          <div class="field"><label for="time">الوقت</label><input id="time" name="time" type="time" min="12:00" max="22:30" step="900"><span class="err" id="e-time"></span></div>
+          <div class="field full"><label for="guests">عدد الأشخاص</label>
+            <select id="guests" name="guests"><option value="">اختر العدد</option></select><span class="err" id="e-guests"></span></div>
+          <button class="btn" type="submit">تأكيد الحجز</button>
+        </form>
+        <div class="ok" id="ok" role="status" tabindex="-1"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>دار الزيتون — موقع تجريبي لأغراض العرض</span><span>© 2026</span></div>
+</footer>
+
+<script>
+const dishes = [
+  {n:'حمّص بالطحينة', d:'حمّص مهروس مع طحينة وزيت زيتون وليمون', p:12, c:'مقبلات'},
+  {n:'متبّل باذنجان', d:'باذنجان مشوي مع طحينة ورمان', p:14, c:'مقبلات'},
+  {n:'فتّوش', d:'خضار طازجة مع خبز مقرمش ودبس رمان', p:16, c:'مقبلات'},
+  {n:'ورق عنب', d:'ورق عنب محشي بالأرز وزيت الزيتون', p:18, c:'مقبلات'},
+  {n:'مسخّن', d:'دجاج مع بصل وسماق على خبز طابون', p:42, c:'وجبات رئيسية'},
+  {n:'مقلوبة لحم', d:'أرز مع لحم وباذنجان وقرنبيط، تُقلب أمامك', p:48, c:'وجبات رئيسية'},
+  {n:'منسف', d:'لحم بلدي مع أرز ولبن جميد وصنوبر', p:55, c:'وجبات رئيسية'},
+  {n:'مشاوي مشكلة', d:'كباب وشيش طاووق وريش مع خضار مشوية', p:60, c:'وجبات رئيسية'},
+  {n:'كنافة نابلسية', d:'جبنة نابلسية وقطر وفستق حلبي', p:20, c:'حلويات'},
+  {n:'قطايف بالقشطة', d:'قطايف مقلية محشوة بالقشطة والعسل', p:18, c:'حلويات'},
+  {n:'أم علي', d:'عجينة مخبوزة بالحليب والمكسرات', p:19, c:'حلويات'}
+];
+const cats = ['الكل','مقبلات','وجبات رئيسية','حلويات'];
+const colors = {'مقبلات':'#5e7a3a','وجبات رئيسية':'#a3311f','حلويات':'#b07a24'};
+const fEl = document.getElementById('filters'), list = document.getElementById('menuList');
+let active = 'الكل';
+
+function render(){
+  const items = dishes.filter(x => active==='الكل' || x.c===active);
+  list.innerHTML = '';
+  if(!items.length){ list.innerHTML = '<li class="empty">لا توجد أطباق في هذا التصنيف.</li>'; return; }
+  items.forEach(x=>{
+    const li = document.createElement('li'); li.className='dish';
+    const m = document.createElement('div'); m.className='mark'; m.style.background=colors[x.c]; m.textContent=x.n[0]; m.setAttribute('aria-hidden','true');
+    const t = document.createElement('div');
+    const h = document.createElement('h3'); h.textContent=x.n;
+    const p = document.createElement('p'); p.textContent=x.d;
+    t.append(h,p);
+    const pr = document.createElement('span'); pr.className='price'; pr.textContent = x.p + ' ₪';
+    li.append(m,t,pr); list.append(li);
+  });
+}
+cats.forEach(c=>{
+  const b = document.createElement('button'); b.type='button'; b.textContent=c;
+  b.setAttribute('aria-pressed', c===active);
+  b.onclick = ()=>{ active=c; [...fEl.children].forEach(k=>k.setAttribute('aria-pressed', k===b)); render(); };
+  fEl.append(b);
+});
+render();
+
+// Booking form
+const form = document.getElementById('bookForm'), ok = document.getElementById('ok');
+const guests = document.getElementById('guests');
+for(let i=1;i<=10;i++){ const o=document.createElement('option'); o.value=i; o.textContent = i===1?'شخص واحد':(i===2?'شخصان':i+' أشخاص'); guests.append(o); }
+const dateEl = document.getElementById('date');
+const today = new Date(); today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
+dateEl.min = today.toISOString().slice(0,10);
+
+const rules = {
+  name: v => v.trim().split(/\s+/).filter(Boolean).length>=2 && v.trim().length>=5 ? '' : 'اكتب اسمك الأول واسم العائلة.',
+  phone: v => /^(\+?97[02])?0?5[0-9]{8}$/.test(v.replace(/[\s-]/g,'')) ? '' : 'اكتب رقم جوال صحيح، مثل 0591234567.',
+  date: v => !v ? 'اختر تاريخ الحجز.' : (v < dateEl.min ? 'لا يمكن الحجز في تاريخ سابق.' : ''),
+  time: v => !v ? 'اختر وقت الحجز.' : ((v<'12:00'||v>'22:30') ? 'الحجز متاح من 12:00 حتى 22:30.' : ''),
+  guests: v => v ? '' : 'اختر عدد الأشخاص.'
+};
+function check(k){
+  const el = form.elements[k], msg = rules[k](el.value);
+  document.getElementById('e-'+k).textContent = msg;
+  el.setAttribute('aria-invalid', !!msg);
+  return !msg;
+}
+Object.keys(rules).forEach(k=>{
+  form.elements[k].addEventListener('blur',()=>check(k));
+  form.elements[k].addEventListener('input',()=>{ if(form.elements[k].getAttribute('aria-invalid')==='true') check(k); });
+});
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const results = Object.keys(rules).map(check);
+  if(results.includes(false)){ form.querySelector('[aria-invalid="true"]').focus(); return; }
+  const f = form.elements;
+  const d = new Date(f.date.value+'T00:00').toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long'});
+  ok.textContent = `شكرًا ${f.name.value.trim().split(/\s+/)[0]}، تم استلام طلب حجزك لـ ${f.guests.value} ${+f.guests.value>10?'':'أشخاص'} يوم ${d} الساعة ${f.time.value}. سنتواصل معك على ${f.phone.value} للتأكيد.`;
+  form.style.display='none'; ok.classList.add('show'); ok.focus();
+});
+</script>
+</body>
+</html>
