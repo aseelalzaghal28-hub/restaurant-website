@@ -1,0 +1,69 @@
+:root{
+  --olive:#2c3a27; --olive-2:#3d4f36; --sumac:#a3311f; --stone:#f6f4ee; --ink:#1f2419; --muted:#666c5e; --line:#dcd8cb; --card:#ffffff;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--stone:#171b14; --ink:#eceae1; --muted:#a4a998; --line:#343a2d; --card:#20261c; --sumac:#e0614b}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{font-family:'Tajawal',system-ui,sans-serif;background:var(--stone);color:var(--ink);line-height:1.7;font-size:17px}
+h1,h2,h3{font-family:'Reem Kufi','Tajawal',serif;line-height:1.3}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sumac);outline-offset:2px}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+
+header{background:var(--olive);color:#f3efe3;position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Reem Kufi';font-size:1.5rem;font-weight:700;text-decoration:none}
+nav{display:flex;gap:22px}
+nav a{text-decoration:none;opacity:.85}
+nav a:hover{opacity:1;text-decoration:underline}
+
+.hero{background:var(--olive);color:#f3efe3;padding:72px 0 88px;position:relative;overflow:hidden}
+.hero::after{content:"زيتون";position:absolute;inset-inline-start:-20px;bottom:-60px;font-family:'Reem Kufi';font-size:18rem;font-weight:700;color:rgba(255,255,255,.04);line-height:1;pointer-events:none}
+.hero h1{font-size:clamp(2.4rem,7vw,4.4rem);max-width:12ch}
+.hero p{max-width:46ch;margin:18px 0 30px;opacity:.88;font-size:1.15rem}
+.btn{display:inline-block;background:var(--sumac);color:#fff;border:0;border-radius:var(--r);padding:12px 28px;font:700 1rem 'Tajawal';cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.5);margin-inline-start:10px}
+
+section{padding:64px 0}
+.sec-head{margin-bottom:28px}
+.sec-head h2{font-size:2rem}
+.sec-head p{color:var(--muted)}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:99px;padding:6px 20px;font:500 1rem 'Tajawal';cursor:pointer;transition:background .15s}
+.filters button:hover{border-color:var(--olive-2)}
+.filters button[aria-pressed="true"]{background:var(--olive);border-color:var(--olive);color:#f3efe3}
+@media (prefers-color-scheme:dark){.filters button[aria-pressed="true"]{background:var(--sumac);border-color:var(--sumac);color:#fff}}
+
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;list-style:none;padding:0}
+.dish{background:var(--card);border:1px solid var(--line);border-radius:var(--r);display:flex;gap:14px;padding:14px;align-items:flex-start}
+.dish .mark{flex:none;width:58px;height:58px;border-radius:8px;display:grid;place-items:center;font:700 1.8rem 'Reem Kufi';color:#fff}
+.dish h3{font-size:1.1rem}
+.dish p{color:var(--muted);font-size:.93rem;line-height:1.5;margin-top:2px}
+.dish .price{font-family:system-ui,'Segoe UI',Arial,sans-serif;margin-inline-start:auto;font-weight:700;color:var(--sumac);white-space:nowrap}
+.empty{color:var(--muted);padding:20px 0}
+
+#book{background:var(--card);border-block:1px solid var(--line)}
+.book-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+@media (max-width:760px){.book-grid{grid-template-columns:1fr;gap:28px}nav{gap:14px;font-size:.95rem}.hero::after{display:none}}
+.hours{list-style:none;padding:0;margin-top:18px}
+.hours li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:8px 0}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field.full{grid-column:1/-1}
+label{font-weight:700;font-size:.95rem}
+input,select,textarea{font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--stone);color:var(--ink);width:100%}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--sumac)}
+.err{color:var(--sumac);font-size:.88rem;min-height:1.2em}
+form .btn{grid-column:1/-1;justify-self:start}
+@media (max-width:520px){form{grid-template-columns:1fr}}
+.ok{display:none;background:var(--olive);color:#f3efe3;border-radius:var(--r);padding:22px}
+.ok.show{display:block}
+
+footer{background:var(--olive);color:#d9d6c8;padding:28px 0;font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
